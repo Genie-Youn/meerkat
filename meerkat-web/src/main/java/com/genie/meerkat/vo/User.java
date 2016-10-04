@@ -10,12 +10,9 @@ public class User {
 	private String userId;
 	private String name;
 	private String phoneNumber;
-	private String role;
+	private Role role;
 	
-	public User(){
-	}
-	
-	public User(String userId, String name, String phoneNumber, String role){
+	public User(String userId, String name, String phoneNumber, Role role){
 		this.userId = userId;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -54,11 +51,11 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 	
