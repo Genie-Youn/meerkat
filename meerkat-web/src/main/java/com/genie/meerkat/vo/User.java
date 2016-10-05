@@ -11,12 +11,14 @@ public class User {
 	private String name;
 	private String phoneNumber;
 	private Role role;
+	private int code;
 	
 	public User(String userId, String name, String phoneNumber, Role role){
 		this.userId = userId;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.role = role;
+		this.code = role.getCode();
 	}
 
 	public String getNumber() {

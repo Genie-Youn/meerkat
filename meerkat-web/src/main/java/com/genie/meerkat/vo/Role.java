@@ -2,7 +2,18 @@ package com.genie.meerkat.vo;
 
 public enum Role {
 
-	ADMIN,
+	ADMIN(1),
 	
-	USER
+	USER(2)
+	;
+	
+	private int code;
+	
+	public int getCode() {
+		return code;
+	}
+
+	Role(int code) {
+		this.code = code;
+	}
 }
