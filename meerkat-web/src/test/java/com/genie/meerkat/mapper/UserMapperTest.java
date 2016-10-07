@@ -16,7 +16,7 @@ import com.genie.meerkat.vo.User;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration()
+@ContextConfiguration(locations = "classpath:/applicationContext.xml")
 public class UserMapperTest {
 
 	private Logger LOG = LoggerFactory.getLogger(UserMapperTest.class);
@@ -24,9 +24,9 @@ public class UserMapperTest {
 	@Autowired
 	private UserMapper mapper;
 	
-	private final static String USER_ID = "2016061075";
-	private final static String USER_NAME = "윤지수";
-	private final static String PHONE_NUMBER = "010-1234-5678";
+	private final static String USER_ID = "'2016061075'";
+	private final static String USER_NAME = "'윤지수'";
+	private final static String PHONE_NUMBER = "'010-1234-5678'";
 	private final static String ROLE = "ADMIN";
 	private final static Role E_ROLE = Role.ADMIN;
 	
@@ -42,9 +42,10 @@ public class UserMapperTest {
 	@Test
 	public void userSelectAndInsertAndDeleteTest() {
 		
+
 		int count;
 		
-		if (mapper.selectUserList() == null) {
+		if (mapper.selectUserList() != null) {
 			count = mapper.selectUserList().size();
 		} else {
 			count = 0;
@@ -54,8 +55,10 @@ public class UserMapperTest {
 		mapper.insertUser(successUser);
 		assertTrue(count < mapper.selectUserList().size());
 		
-		mapper.deleteUser(USER_ID);
+		mapper.deleteUser(successUser);
 		if (mapper.selectUserList() != null) {
+			System.out.println("count : " + count);
+			System.out.println("size :" + mapper.selectUserList().size());
 			assertTrue(count == mapper.selectUserList().size());
 		} else {
 			assertTrue(count == 0);

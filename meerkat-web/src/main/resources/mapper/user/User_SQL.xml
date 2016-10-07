@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="user">
+<mapper namespace="User">
 
-	<resultMap type="com.genie.meerkat.vo.User" id="user">
-		<result property="userId" column="u_seq" />
+	<resultMap type="com.genie.meerkat.vo.User" id="User">
+		<result property="number" column="u_seq" />
+		<result property="userId" column="u_id" />
 		<result property="name" column="u_name" />
 		<result property="phoneNumber" column="u_phone_number"/>
 	</resultMap>
@@ -17,7 +18,7 @@
 	]]>
 	</insert>
 	
-	<delete id="delete">
+	<delete id="delete" >
 	<![CDATA[
 		DELETE FROM `meerkat`.`user` 
 		WHERE 
@@ -39,7 +40,7 @@
 	<select id="selectAll" resultMap="User">
 	<![CDATA[
 		SELECT
-			*
+			u_seq, u_id, u_name, u_phone_number
 		FROM
 			`meerkat`.`user`
 	]]>
