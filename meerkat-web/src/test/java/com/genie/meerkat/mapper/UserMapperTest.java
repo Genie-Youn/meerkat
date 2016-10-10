@@ -41,7 +41,6 @@ public class UserMapperTest {
 	
 	@Test
 	public void userSelectAndInsertAndDeleteTest() {
-		
 
 		int count;
 		
@@ -50,7 +49,6 @@ public class UserMapperTest {
 		} else {
 			count = 0;
 		}
-		
 		
 		mapper.insertUser(successUser);
 		assertTrue(count < mapper.selectUserList().size());

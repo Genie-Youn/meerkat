@@ -22,7 +22,11 @@ public class User {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.role = role;
-		this.code = role.getCode();
+		if (role != null) {
+			this.code = role.getCode();
+		} else {
+			this.code = 2;
+		}
 	}
 
 	public String getNumber() {
