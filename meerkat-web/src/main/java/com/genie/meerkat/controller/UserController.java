@@ -18,15 +18,15 @@ public class UserController {
 
 	private Logger LOG = LoggerFactory.getLogger(UserController.class);
 	
-//	@Autowired
-//	private UserService userService;
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public String addUser(@RequestBody User user) {
-		
-		
-		
-		return null;
+		if (userService.addUser(user)) {
+			return "OK";
+		}
+		return "FAIL";
 	}
 }
