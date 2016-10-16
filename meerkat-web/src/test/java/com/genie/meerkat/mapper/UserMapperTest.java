@@ -55,8 +55,6 @@ public class UserMapperTest {
 		
 		mapper.deleteUser(successUser);
 		if (mapper.selectUserList() != null) {
-			System.out.println("count : " + count);
-			System.out.println("size :" + mapper.selectUserList().size());
 			assertTrue(count == mapper.selectUserList().size());
 		} else {
 			assertTrue(count == 0);
