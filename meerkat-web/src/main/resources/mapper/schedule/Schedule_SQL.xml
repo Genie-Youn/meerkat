@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Schedule">
+
+	<resultMap type="com.genie.meerkat.vo.Schedule" id="Schedule">
+		<result property="seqSchedule" column="s_seq" />
+		<result property="seqUser" column="u_seq" />
+		<result property="date" column="s_date" />
+		<result property="startTime" column="s_start"/>
+		<result property="endTime" column="s_end"/>
+	</resultMap>
+	
+	<insert id="insertSchedule">
+	<![CDATA[
+		INSERT INTO `meerkat`.`schedule` 
+			(`u_seq`, `s_date`, `s_start`, `s_end`) 
+		VALUES 
+			(#{seqUser}, #{date}, #{startTime}, #{endTime});
+
+	]]>
+	</insert>
+	
+	<delete id="delete" >
+	<![CDATA[
+		DELETE FROM `meerkat`.`schedule` 
+		WHERE 
+			`u_seq`=${seqUser};
+	]]>
+	</delete>
+
+	<select id="selectAll" resultMap="Schedule">
+	<![CDATA[
+		SELECT
+			*
+		FROM
+			`meerkat`.`schedule`
+	]]>
+	</select>
+	
+	
+	
+</mapper>
