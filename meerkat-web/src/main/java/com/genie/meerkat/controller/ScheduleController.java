@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.genie.meerkat.batch.Scheduler;
 import com.genie.meerkat.service.ScheduleService;
 import com.genie.meerkat.service.ScheduleServiceImpl;
 import com.genie.meerkat.vo.Schedule;
@@ -25,6 +26,9 @@ public class ScheduleController {
 	@Autowired
 	ScheduleService service;
 	
+	@Autowired
+	Scheduler scheduler;
+	
 	@RequestMapping(value="/{user_id}", method=RequestMethod.POST)
 	@ResponseBody
 	public String setSchedule(@PathVariable("user_id") String userId, @RequestBody Schedule schedule){
@@ -35,6 +39,15 @@ public class ScheduleController {
 		} catch (DataAccessException e) {
 			return "Fail";
 		}
+		return "OK";
+	}
+	
+	@RequestMapping(value="/send", method=RequestMethod.GET)
+	@ResponseBody
+	public String sendSMS(){
+		
+		scheduler.getTodayNotyList();
+		
 		return "OK";
 	}
 	

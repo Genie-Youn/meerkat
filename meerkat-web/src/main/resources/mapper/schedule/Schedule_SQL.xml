@@ -10,6 +10,16 @@
 		<result property="endTime" column="s_end"/>
 	</resultMap>
 	
+	<resultMap type="com.genie.meerkat.view.ScheduleView" id="ScheduleView">
+		<result property="scheduleSeq" column="s_seq" />
+		<result property="userId" column="u_seq" />
+		<result property="date" column="s_date" />
+		<result property="startTime" column="s_start"/>
+		<result property="endTime" column="s_end"/>
+		<result property="phoneNumber" column="u_phone_number"/>
+		<result property="userName" column="u_name" />
+	</resultMap>
+	
 	<insert id="insertSchedule">
 	<![CDATA[
 		INSERT INTO `meerkat`.`schedule` 
@@ -37,6 +47,14 @@
 	]]>
 	</select>
 	
-	
-	
+	<select id ="selectListByDate" resultMap="ScheduleView">
+	<![CDATA[
+		SELECT 
+			* 
+		FROM 
+			schedule s LEFT JOIN user u ON s.u_seq = u.u_id
+		WHERE 
+			s_date = #{date}
+	]]>
+	</select>
 </mapper>
