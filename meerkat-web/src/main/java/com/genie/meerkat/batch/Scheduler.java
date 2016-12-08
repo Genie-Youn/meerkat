@@ -22,8 +22,8 @@ import com.gabia.api.*;
 public class Scheduler {
 	
 	private static Logger LOG = LoggerFactory.getLogger(Scheduler.class);
-	private static String API_KEY = "b6237784954b345d6174ea4979bfe4af";
-	private static String API_ID = "bonos2";
+	private static String API_KEY = "";
+	private static String API_ID = "";
 	@Autowired
 	private ScheduleMapper mapper;
 	
