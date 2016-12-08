@@ -22,12 +22,12 @@ import com.gabia.api.*;
 public class Scheduler {
 	
 	private static Logger LOG = LoggerFactory.getLogger(Scheduler.class);
-	private static String API_KEY = "";
-	private static String API_ID = "";
+	private static String API_KEY = "b6237784954b345d6174ea4979bfe4af";
+	private static String API_ID = "bonos2";
 	@Autowired
 	private ScheduleMapper mapper;
 	
-	@Scheduled(cron = "0 7 * * * *")
+	
 	public void sendNotify(List scheduleList){
 		ApiClass api = new ApiClass(API_ID, API_KEY);
 		Iterator<ScheduleView> it = scheduleList.iterator();
@@ -46,6 +46,7 @@ public class Scheduler {
 		}
 	}
 	
+	@Scheduled(cron = "0 0 7 * * *")
 	public void getTodayNotyList(){
 		List scheduleList = new ArrayList<ScheduleView>();
 		Date date = new Date();
