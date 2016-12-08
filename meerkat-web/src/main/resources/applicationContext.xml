@@ -9,4 +9,5 @@
   <import resource="classpath:datasource-context.xml"/>
   <import resource="classpath:mapper-context.xml"/>
   <import resource="classpath:servlet-context.xml"/>
+  <import resource="classpath:schedule-context.xml"/>
 </beans>
